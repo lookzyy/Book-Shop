@@ -123,7 +123,7 @@ http.onload = function () {
                   <span class="cart-price">${item.price}</span>
                   <span>$</span>
                </p>
-               <div class="remove-btn"><img src="/assets/icons/remove-btn.png" class="remove-img" alt="remove btn"></div>
+               <div class="remove-btn"><img src="assets/icons/remove-btn.png" class="remove-img" alt="remove btn"></div>
             </div>
                     `;
                     //select cart
