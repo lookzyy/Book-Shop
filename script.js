@@ -64,6 +64,19 @@ div.appendChild(bookCatalog);
 cartTotal.append(cartTotalText)
 cartToTalContainer.appendChild(cartTotal)
 
+
+let showMoreModalContainer = document.createElement("div")
+let showMoreModal = document.createElement("div")
+let closeModal = document.createElement("button")
+let closeModalText = document.createTextNode("x")
+showMoreModalContainer.classList.add("show-more-modal-container")
+showMoreModal.classList.add("show-more-modal")
+closeModal.classList.add("close-modal")
+closeModal.appendChild(closeModalText)
+showMoreModalContainer.appendChild(closeModal)
+showMoreModalContainer.appendChild(showMoreModal)
+document.body.append(showMoreModalContainer)
+
 let http = new XMLHttpRequest();
 http.open('get', 'books.json', true);
 http.send();
@@ -82,7 +95,7 @@ http.onload = function () {
                   <span class="price">${x.price}</span>
                   <span>$</span>
                </p>
-               <a href="#" class="show-more">Show more</a><br><br>
+               <button type="button" class="show-more">Show more</button><br><br>
                <button type="button" class="add-to-bag">Add to bag</button>
             </div>
          `;
@@ -136,18 +149,14 @@ http.onload = function () {
                     let removeBtn = cartItem.querySelector(".remove-img");
                     addRemoveCartEvent(removeBtn);
 
-
                     //open checkout
                     (function () {
                         const checkoutBtn = document.querySelector(".checkout")
                         checkoutBtn.addEventListener("click", event => {
                             let x = event.target.parentElement.parentElement.parentElement.firstElementChild
                             x.style.display = "block"
-
                         })
                     })();
-
-
                 }
             })
         })
@@ -299,5 +308,58 @@ http.onload = function () {
         const formControl = input.parentElement;
         formControl.className = 'form-control success';
     }
+
+    (function () {
+        const checkBox = document.querySelectorAll(".checkInput")
+        checkBox.forEach(element => {
+            element.addEventListener("change", event => {
+                let checkedItems = document.querySelectorAll(".checkInput:checked");
+                if (checkedItems.length === 2) {
+                    let uncheckedItems = document.querySelectorAll(".checkInput:not(:checked)");
+                    uncheckedItems.forEach(uncheckedItem => {
+                        uncheckedItem.setAttribute("disabled", "");
+                    })
+                }
+                else {
+                    let removeDisabledItems = document.querySelectorAll(".checkInput")
+                    removeDisabledItems.forEach(removeChecked => {
+                        removeChecked.removeAttribute("disabled")
+                    })
+                }
+            })
+        })
+    })();
+
+    //show more  showModal.style.display = "flex";
+    if (this.readyState == 4 && this.status == 200) {
+        const showMorebtn = document.querySelectorAll(".show-more");
+        const showModal = document.querySelector(".show-more-modal-conainer");
+
+        showMorebtn.forEach(showElement => {
+            showElement.addEventListener("click", event => {
+                let title = event.target.parentElement.children[1].textContent
+                let books = JSON.parse(this.responseText);
+                let q = "";
+                for (let m of books) {
+                    if (title === m.title) {
+                        q += `
+                        <p class="modal-text"><span class="des-span">Description</span>: ${m.description}</p>
+                        `
+                    }
+                    document.querySelector(".show-more-modal").innerHTML = q;
+                }
+                let p = event.target.parentElement.parentElement.parentElement.parentElement.children[6]
+                p.style.display = "flex";
+
+            })
+        })
+    }
+
+    //close modal
+    let closeModalBtn = document.querySelector(".close-modal")
+    closeModalBtn.addEventListener("click", closeBtn => {
+        let closeModal = closeBtn.target.parentElement
+        closeModal.style.display = "none"
+    })
 }
 
