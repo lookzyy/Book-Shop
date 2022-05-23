@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <title>Book Shop</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <form id="form" class="form">
+      <div class="form-control">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Name" id="name" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="surname">Surname</label>
+        <input type="text" placeholder="Surname" id="surname" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="date">Delivery date</label>
+        <input type="date" id="date" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="street">Street</label>
+        <input type="text" placeholder="Street" id="street" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="houseNumber">House number</label>
+        <input type="text" placeholder="House number" id="houseNumber" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control">
+        <label for="flatNumber">Flat number</label>
+        <input type="text" placeholder="Flat number" id="flatNumber" />
+        <small>Error message</small>
+      </div>
+
+      <div class="form-control-radio">
+        <p>Please select payment method</p>
+
+        <div>
+          <input type="radio" id="cash" name="payment" value="cash" checked>
+          <label for="cash">Cash</label>
+        </div>
+        <div>
+          <input type="radio" id="card" name="payment" value="card">
+          <label for="card">Card</label>
+        </div>
+      </div>
+
+      <div class="form-control-checkbox">
+        <p>Choose 2 gifts: </p>
+
+        <div class="gift">
+          <input type="checkbox" id="gift" name="gift" class="checkInput">
+          <label for="gift">Pack as a gift</label>
+        </div>
+
+        <div class="postcard">
+          <input type="checkbox" id="postcard" name="postcard" class="checkInput">
+          <label for="postcard">Add postcard</label>
+        </div>
+
+        <div class="discount">
+          <input type="checkbox" id="discount" name="discount" class="checkInput">
+          <label for="discount">Provide 2% discount to the next time</label>
+        </div>
+
+        <div class="pencil">
+          <input type="checkbox" id="pencil" name="pencil" class="checkInput">
+          <label for="pencil">Branded pen or pencil</label>
+        </div>
+
+      </div>
+
+      <button id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
