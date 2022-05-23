@@ -74,7 +74,7 @@ body {
 }
 
 .cart-info-img {
-    background-image: url("/assets/icons/cart-icon.png");
+    background-image: url("assets/icons/cart-icon.png");
     width: 46px;
     height: 46px;
     margin-right: 15px;
